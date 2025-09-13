@@ -1,0 +1,23 @@
+/* Menubar.css */
+
+/* Sidebar wrapper */
+.sidebar {
+  position: fixed;
+  top: 80px; /* matches navbar height */
+  left: 0;
+  width: 220px;
+  height: calc(100vh - 80px);
+  background: #fff;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.08);
+  padding: 20px 0;
+  z-index: 999;
+  /* Add a transform to move the sidebar off-screen */
+  transform: translateX(-100%);
+  /* Add a transition for a smooth animation */
+  transition: transform 0.3s ease-in-out; 
+}
+
+/* This class is applied when the menu is open */
+.sidebar.open {
+  transform: translateX(0); /* Move it back to its original position */
+}

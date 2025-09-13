@@ -1,0 +1,61 @@
+/* Sidebar wrapper */
+.sidebar {
+  position: fixed;
+  top: 80px; /* matches navbar height */
+  left: 0;
+  width: 220px;
+  height: calc(100vh - 80px);
+  background: #fff;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.08);
+  padding: 20px 0;
+  transition: transform 0.3s ease-in-out;
+  z-index: 999;
+}
+
+/* Menu UL list */
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Each menu item */
+.menu-list li {
+  margin: 10px 0;
+}
+
+/* Menu links */
+.menu-link {
+  display: block;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Hover + active states */
+.menu-link:hover {
+  background: #f1f1f1;
+  color: #007bff;
+}
+
+.menu-link.active {
+  background: #007bff;
+  color: #fff;
+}
+
+.main-content {
+  padding-top: 80px; 
+  padding-left: 20px;
+  padding-right: 20px;
+  /* Add a transition for a smooth shift */
+  transition: margin-left 0.3s ease-in-out;
+  margin-left: 0; /* Default state with no shift */
+}
+
+/* This class is applied when the menu is open */
+.main-content.shifted {
+  margin-left: 220px; /* Shifts content to make room for the sidebar */
+}

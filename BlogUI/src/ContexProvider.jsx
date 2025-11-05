@@ -8,9 +8,11 @@ const ContextProvider = ({children}) => {
   const [isLoggedIn,setLoggedIn] = useState(false);
   const [userName, setUserName] = useState('');
   const [isMenuOpen, setMenuOpen]= useState(false);
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   useEffect(()=>{
     const tokenVerification=async ()=>{
-      const res=await fetch('http://localhost:3001/users/verify',{
+      const res=await fetch(`${apiUrl}/users/verify`,{
         method :'GET',
         credentials : 'include'
       })

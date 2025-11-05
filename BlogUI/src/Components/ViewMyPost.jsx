@@ -7,11 +7,12 @@ const ViewMyPost = () => {
     const { id } = useParams();
     const [isLoading, setLoading] = useState(true);
     const [post, setPost] = useState(null);
+    const apiUrl = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
         const fetchPost = async () => {
             try {
-                const res = await fetch(`http://localhost:3001/posts/getmypost/${id}`, {
+                const res = await fetch(`${apiUrl}/posts/getmypost/${id}`, {
                     method: 'GET',
                     credentials: 'include'
                 });

@@ -5,11 +5,12 @@ import '../Styles/PublicPosts.css';
 
 const PublicPosts = () => {
     const [posts, setPosts] = useState([]);
+    const apiUrl = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await fetch('http://localhost:3001/posts/allposts', {
+                const res = await fetch(`${apiUrl}/posts/allposts`, {
                     method: 'GET',
                     credentials: 'include'
                 });

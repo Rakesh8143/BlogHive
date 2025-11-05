@@ -14,6 +14,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [showConfrim, setConfirm]= useState(false)
   const navigate = useNavigate();
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const handleOutSideClick = (event) => {
@@ -28,7 +29,7 @@ const Navbar = () => {
   }, []);
 
   const handleLogout = async () => {
-     const res = await fetch("http://localhost:3001/users/logout", {
+     const res = await fetch(`${apiUrl}/users/logout`, {
         method: "POST",
         credentials: 'include'
         });

@@ -18,6 +18,7 @@ const Register = () => {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const validate=()=> (uname.length>0 && email.length>0 && emailRegex.test(email) && pwd.length>=8 && regex.test(pwd) && pwd===cnf)
   const isValid = validate();
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   const handleOnsubmit =async (e)=>{
       e.preventDefault();
@@ -27,7 +28,7 @@ const Register = () => {
         password : pwd
       }
       try{
-          const res= await fetch("http://localhost:3001/users/register",{
+          const res= await fetch(`${apiUrl}/users/register`,{
             method : "POST",
             headers :{
               'Content-Type' : "application/json"

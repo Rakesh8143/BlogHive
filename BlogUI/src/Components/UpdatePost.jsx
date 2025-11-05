@@ -12,6 +12,7 @@ const UpdatePost = () => {
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
   const [isPublic, setIsPublic] = useState(true)
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   const { getRootProps, getInputProps } = useDropzone({
     multiple: false,
@@ -26,7 +27,7 @@ const UpdatePost = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const res = await fetch(`http://localhost:3001/posts/getmypost/${id}`, {
+        const res = await fetch(`${apiUrl}/posts/getmypost/${id}`, {
           method: 'GET',
           credentials: 'include'
         })
@@ -67,7 +68,7 @@ const UpdatePost = () => {
     }
 
     try {
-      const res = await fetch(`http://localhost:3001/posts/update/${id}`, {
+      const res = await fetch(`${apiUrl}/posts/update/${id}`, {
         method: 'PATCH',
         credentials: 'include',
         body: formData

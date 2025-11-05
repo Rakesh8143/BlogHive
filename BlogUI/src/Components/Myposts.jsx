@@ -12,9 +12,10 @@ const Myposts = () => {
     const [isConfirmOpen, setConfirm] = useState(false);
     const [deleteId, setDeleteId]= useState(null);
     const navigate= useNavigate();
+    const apiUrl = import.meta.env.VITE_API_URL;
 
     const handleDelete = async (id) => {
-        const res = await fetch(`http://localhost:3001/posts/delete/${id}`, {
+        const res = await fetch(`${apiUrl}/posts/delete/${id}`, {
             method: 'DELETE',
             credentials: 'include'
         });
@@ -29,7 +30,7 @@ const Myposts = () => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const res = await fetch("http://localhost:3001/posts/myposts", {
+                const res = await fetch(`${apiUrl}/posts/myposts`, {
                     method: 'GET',
                     credentials: "include"
                 });

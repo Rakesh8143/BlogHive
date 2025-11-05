@@ -6,6 +6,7 @@ import '../Styles/AddPost.css'
 import { useNavigate } from 'react-router-dom'
 
 const AddPost = () => {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const [image, setImage] = useState(null)
   const [title, setTitle] = useState("")
@@ -33,7 +34,7 @@ const AddPost = () => {
       title, content, isPublic, image
     })
     try{
-        const res=await fetch('http://localhost:3001/posts/addPost',{
+        const res=await fetch(`${apiUrl}/posts/addPost`,{
       method : 'POST',
       credentials :'include',
       body : formData

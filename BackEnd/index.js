@@ -8,21 +8,22 @@ const userRouter = require("./userRoutes")
 const postRouter =require('./postRoutes')
 const publicRoutes =require('./publicRoutes')
 const cors = require('cors')
-const url='mongodb://localhost:27017/myAppDB'
+const port=process.env.PORT || 5000;
+// const url='mongodb://localhost:27017/myAppDB'
 
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: process.env.CORS_ORIGIN,
   credentials: true 
 }));
 
 app.use(express.json())
 app.use(cookieParser());
 async function startServer() {
-    await mongoose.connect(url);
+    await mongoose.connect(process.env.MONGO_URL);
     console.log("connected to db")
     app.use("/users",userRouter)
     app.use("/posts",publicRoutes)
     app.use("/posts",postRouter)
-    app.listen(process.env.PORT,()=>console.log(`server started at ${process.env.PORT}`))
+    app.listen(port,()=>console.log(`server started at ${port}`))
 }
 startServer()

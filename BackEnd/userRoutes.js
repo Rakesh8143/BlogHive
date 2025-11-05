@@ -6,7 +6,7 @@ const jwt=require("jsonwebtoken")
 const {authenticate}=require('./middlewares')
 
 router.get("/verify",authenticate,(req,res)=>{
-    console.log(req.user.uname)
+    // console.log(req.user.uname)
     res.json({userName:req.user.uname})
 })
 router.post("/login",async (req,res)=>{
@@ -56,8 +56,8 @@ router.post("/register",async (req,res)=>{
         const token=jwt.sign(payload,process.env.SECRET_KEY)
         res.cookie('token',token,{
             httpOnly:true,
-            secure:false,
-            sameSite:'lax'
+            secure:true,
+            sameSite:'none'
         }).json({message:"token sent successfully",userName:user.userName});
     }
     catch(error)
